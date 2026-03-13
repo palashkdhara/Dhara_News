@@ -14,37 +14,17 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Side Menu Overlay -->
-    <div class="side-menu-overlay" id="side-menu-overlay"></div>
-    
-    <!-- Side Menu -->
-    <div class="side-menu" id="side-menu">
-        <div class="side-menu-header">
-            <h2>মেনু</h2>
-            <button id="close-menu-btn" class="close-menu-btn" aria-label="Close menu">
-                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
-                </svg>
-            </button>
-        </div>
-        <ul class="side-menu-list">
-            <li><a href="#" data-action="home">হোম</a></li>
-            <li><a href="#" data-action="saved">সংরক্ষিত খবর</a></li>
-            <li><a href="#" data-action="settings">সেটিংস</a></li>
-        </ul>
-    </div>
-
-    <!-- Breaking News Ticker -->
+    <!-- Breaking News Ticker (populated dynamically from articles) -->
     <div class="breaking-news">
-        <span class="breaking-label">ব্রেকিং নিউজ:</span>
+        <span class="breaking-label">ব্রেকিং:</span>
         <div class="ticker-wrapper">
-            <div class="ticker-text" id="ticker-text">রাজ্যে নতুন শিক্ষানীতি চালু হতে চলেছে, আগামী শিক্ষাবর্ষ থেকেই কার্যকর হবে। প্রবল বর্ষণে বানভাসি উত্তরবঙ্গ, বিপর্যস্ত জনজীবন।</div>
+            <div class="ticker-text" id="ticker-text"></div>
         </div>
     </div>
 
     <!-- Header -->
     <header class="app-header">
-        <button id="menu-btn" class="menu-btn" aria-label="Menu">
+        <button class="menu-btn" aria-label="Menu">
             <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
                 <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
             </svg>
@@ -93,6 +73,30 @@
         <!-- Bottom margin space for fixed nav -->
         <div style="height: 60px;"></div>
     </main>
+
+    <!-- Article Detail Overlay (In-App Reader) -->
+    <div id="article-overlay" class="article-overlay">
+        <div class="overlay-header">
+            <button id="overlay-back-btn" class="overlay-back-btn" aria-label="Back">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                    <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+                </svg>
+                <span>ফিরে যান</span>
+            </button>
+            <span id="overlay-source" class="overlay-source"></span>
+        </div>
+        <div class="overlay-body">
+            <img id="overlay-img" class="overlay-img" src="" alt="News Image">
+            <div class="overlay-content">
+                <h1 id="overlay-title" class="overlay-title"></h1>
+                <div id="overlay-meta" class="overlay-meta"></div>
+                <p id="overlay-description" class="overlay-description"></p>
+                <a id="overlay-link" class="overlay-read-more" href="#" target="_blank" rel="noopener">
+                    🔗 মূল সংবাদ পড়ুন (বাহ্যিক লিঙ্ক)
+                </a>
+            </div>
+        </div>
+    </div>
 
     <!-- Bottom Navigation Bar -->
     <nav class="bottom-nav">
